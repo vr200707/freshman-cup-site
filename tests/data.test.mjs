@@ -41,7 +41,7 @@ test("updates the six supplied scores", () => {
   assert.deepEqual(scores, [
     { home: 5, away: 2 }, { home: 4, away: 3 },
     { home: 6, away: 0 }, { home: 0, away: 8 },
-    { home: 2, away: 3 }, { home: 1, away: 7 },
+    { home: 2, away: 2 }, { home: 1, away: 7 },
   ]);
 });
 
