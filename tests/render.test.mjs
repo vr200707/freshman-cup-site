@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { renderBadge, renderFixture, renderScorerRow, renderStandingsTable } from "../app.js";
+import { renderBadge, renderFixture, renderScorerEmpty, renderScorerRow, renderStandingsTable } from "../app.js";
 import { groupStandings } from "../data.js";
 
 test("renders supplied scores only for completed fixtures", () => {
@@ -43,6 +43,12 @@ test("renders scorer rank, name, and goal count", () => {
   assert.match(html, /排名 1/);
   assert.match(html, /王相钧/);
   assert.match(html, /1 球/);
+});
+
+test("renders a knockout empty state when no scorers are recorded", () => {
+  const html = renderScorerEmpty();
+  assert.match(html, /淘汰赛尚未开始/);
+  assert.match(html, /进球数据会显示在这里/);
 });
 
 test("renders standings columns and sorted team rows", () => {

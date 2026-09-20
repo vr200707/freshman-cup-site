@@ -33,7 +33,7 @@ test("records only the eight supplied completed scores", () => {
 });
 
 test("lists only the supplied scorer record", () => {
-  assert.deepEqual(scorers, [{ name: "王相钧", goals: 1 }]);
+  assert.deepEqual(scorers, []);
 });
 
 test("updates the six supplied scores", () => {

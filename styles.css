@@ -306,6 +306,10 @@ h1 {
 .player-avatar { display: grid; place-items: center; width: 42px; height: 42px; color: var(--paper-light); background: var(--accent); border-radius: 50%; font-family: STKaiti, KaiTi, serif; font-size: 1.1rem; }
 .goal-count { text-align: right; color: var(--ink-soft); }
 .goal-count strong { color: var(--accent); font-family: Georgia, serif; font-size: 1.8rem; }
+.scorer-empty { display: grid; justify-items: center; gap: 8px; padding: 46px 24px; color: var(--ink-soft); text-align: center; }
+.scorer-empty strong { color: var(--ink); font-family: STKaiti, KaiTi, serif; font-size: 1.25rem; }
+.scorer-empty small { font-size: 0.78rem; }
+.empty-mark { display: grid; place-items: center; width: 42px; height: 42px; margin-bottom: 3px; color: var(--paper-light); background: var(--accent); border-radius: 50%; }
 .data-note { margin: 0; padding: 16px 24px; color: var(--ink-soft); font-size: 0.78rem; }
 
 .standings-list-wrap { display: grid; gap: 28px; }

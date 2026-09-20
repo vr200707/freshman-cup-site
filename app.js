@@ -71,6 +71,10 @@ export function renderScorerRow(scorer, index) {
   </li>`;
 }
 
+export function renderScorerEmpty() {
+  return `<li class="scorer-empty"><span class="empty-mark" aria-hidden="true">✦</span><strong>淘汰赛尚未开始</strong><small>淘汰赛开始后，进球数据会显示在这里。</small></li>`;
+}
+
 export function renderStandingsTable(group, rows) {
   return `<section class="standings-group">
     <div class="standings-group-heading"><span>小组 ${escapeHtml(group)}</span><small>积分榜</small></div>
@@ -93,7 +97,7 @@ function initialize() {
   const scorersList = document.querySelector("#scorers-list");
   const standingsList = document.querySelector("#standings-list");
   scheduleList.innerHTML = matchdays.map(renderMatchday).join("");
-  scorersList.innerHTML = scorers.map(renderScorerRow).join("");
+  scorersList.innerHTML = scorers.length ? scorers.map(renderScorerRow).join("") : renderScorerEmpty();
   standingsList.innerHTML = renderStandingsTable("A", groupStandings.A) + renderStandingsTable("B", groupStandings.B);
 
   const tabs = [...document.querySelectorAll('[role="tab"]')];

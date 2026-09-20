@@ -79,7 +79,7 @@ export const matchdays = Object.freeze([
   },
 ]);
 
-export const scorers = Object.freeze([{ name: "王相钧", goals: 1 }]);
+export const scorers = Object.freeze([]);
 
 function createStanding(id) {
   return { id, played: 0, wins: 0, draws: 0, losses: 0, goalsFor: 0, goalsAgainst: 0, points: 0 };
