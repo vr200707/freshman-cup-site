@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="2026 新生杯九人制足球赛赛程、比赛结果与射手榜。" />
+    <meta name="theme-color" content="#24231f" />
+    <title>2026 新生杯 · 赛程与结果</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%23f2ead9' stroke='%2324231f' stroke-width='4'/%3E%3Cpath d='m32 16 10 7-4 12H26l-4-12zM15 29l11 6-2 12-11-2M49 29l-11 6 2 12 11-2M24 47h16l-8 8z' fill='none' stroke='%2324231f' stroke-width='3'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <p class="hero-kicker">LG FOOTBALL CLUB · 2026</p>
+        <div class="hero-title-row">
+          <div>
+            <h1>新生杯</h1>
+            <p class="hero-subtitle">九人制足球赛 · 赛程与比赛结果</p>
+          </div>
+          <div class="hero-mark" aria-hidden="true"><span>26</span><small>CUP</small></div>
+        </div>
+        <div class="hero-meta">
+          <span><i aria-hidden="true"></i> 比赛时间 18:00</span>
+          <span>赛程更新至 2026.09.20</span>
+        </div>
+      </header>
+
+      <main class="paper-panel">
+        <nav class="view-tabs" role="tablist" aria-label="赛事视图">
+          <button id="schedule-tab" class="view-tab is-active" role="tab" aria-selected="true" aria-controls="schedule-panel" tabindex="0" data-panel="schedule-panel">比赛赛程</button>
+          <button id="standings-tab" class="view-tab" role="tab" aria-selected="false" aria-controls="standings-panel" tabindex="-1" data-panel="standings-panel">小组积分</button>
+          <button id="scorers-tab" class="view-tab" role="tab" aria-selected="false" aria-controls="scorers-panel" tabindex="-1" data-panel="scorers-panel">射手榜</button>
+        </nav>
+
+        <section id="schedule-panel" class="tab-panel" role="tabpanel" aria-labelledby="schedule-tab">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">FIXTURES & RESULTS</p>
+              <h2>比赛日程</h2>
+            </div>
+            <p class="section-note">已结束比赛显示比分，未开始比赛仅显示开球时间。</p>
+          </div>
+          <div id="schedule-list" class="schedule-list"></div>
+        </section>
+
+        <section id="standings-panel" class="tab-panel" role="tabpanel" aria-labelledby="standings-tab" hidden>
+          <div class="section-heading">
+            <div><p class="eyebrow">GROUP STANDINGS</p><h2>小组积分</h2></div>
+            <p class="section-note">胜一场 3 分，平局 1 分，负场 0 分。积分相同按净胜球排序。</p>
+          </div>
+          <div id="standings-list" class="standings-list-wrap"></div>
+        </section>
+
+        <section id="scorers-panel" class="tab-panel" role="tabpanel" aria-labelledby="scorers-tab" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">TOP SCORERS</p>
+              <h2>射手榜</h2>
+            </div>
+            <p class="section-note">射手榜仅统计已录入数据。</p>
+          </div>
+          <div class="scorers-card">
+            <div class="scorers-head" aria-hidden="true"><span>排名</span><span>球员</span><span>进球</span></div>
+            <ol id="scorers-list" class="scorers-list"></ol>
+            <p class="data-note"><span aria-hidden="true">✎</span> 当前为测试数据，后续将持续补充。</p>
+          </div>
+        </section>
+      </main>
+
+      <footer><span>2026 新生杯</span><span>为热爱而战 · PLAY FOR THE GAME</span></footer>
+    </div>
+    <noscript>请启用 JavaScript 以查看赛程和射手榜。</noscript>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
