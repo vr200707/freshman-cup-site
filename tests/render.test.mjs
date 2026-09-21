@@ -58,6 +58,6 @@ test("renders standings columns and sorted team rows", () => {
   assert.match(html, /进\/失/);
   assert.match(html, /积分/);
   assert.ok(html.indexOf("3队") < html.indexOf("2队"));
-  assert.match(html, /12\/2/);
-  assert.match(html, />6</);
+  assert.match(html, /15\/5/);
+  assert.match(html, />7</);
 });
