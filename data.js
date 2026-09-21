@@ -69,7 +69,7 @@ export const matchdays = Object.freeze([
     date: "2026-09-24",
     stage: "淘汰赛",
     round: "半决赛",
-    fixtures: [scheduled("A组第1", "B组第2"), scheduled("B组第1", "A组第2")],
+    fixtures: [scheduled(3, "B组第2"), scheduled("B组第1", 2)],
   },
   {
     date: "2026-10-08",

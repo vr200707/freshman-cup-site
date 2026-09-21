@@ -52,6 +52,13 @@ test("records the September 20 draws", () => {
   ]);
 });
 
+test("fills the A group semifinal qualifiers", () => {
+  assert.deepEqual(matchdays[6].fixtures.map(({ home, away }) => ({ home, away })), [
+    { home: 3, away: "B组第2" },
+    { home: "B组第1", away: 2 },
+  ]);
+});
+
 test("calculates separate A and B group standings", () => {
   assert.deepEqual(groupStandings.A.map(({ id, played, wins, draws, losses, goalsFor, goalsAgainst, points }) => ({ id, played, wins, draws, losses, goalsFor, goalsAgainst, points })), [
     { id: 3, played: 3, wins: 2, draws: 1, losses: 0, goalsFor: 15, goalsAgainst: 5, points: 7 },
