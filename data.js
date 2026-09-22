@@ -63,7 +63,7 @@ export const matchdays = Object.freeze([
     date: "2026-09-22",
     stage: "小组赛 · B组",
     round: "第 3 轮",
-    fixtures: [scheduled(1, 4), scheduled(7, 8)],
+    fixtures: [scheduled(1, 4), { home: 7, away: 8, time: "18:00", status: "forfeit", score: { home: 3, away: 0 } }],
   },
   {
     date: "2026-09-24",
@@ -90,7 +90,7 @@ function calculateGroup(groupLetter) {
   matchdays
     .filter((matchday) => matchday.stage === `小组赛 · ${groupLetter}组`)
     .flatMap((matchday) => matchday.fixtures)
-    .filter((fixture) => fixture.status === "completed" && fixture.score)
+    .filter((fixture) => ["completed", "forfeit"].includes(fixture.status) && fixture.score)
     .forEach(({ home, away, score }) => {
       const homeRow = table[home];
       const awayRow = table[away];

@@ -26,7 +26,7 @@ function renderTeam(teamId, score, side) {
 }
 
 export function renderFixture(fixture) {
-  const completed = fixture.status === "completed" && fixture.score !== null;
+  const completed = ["completed", "forfeit"].includes(fixture.status) && fixture.score !== null;
   const scoreHtml = completed
     ? `<div class="fixture-score sr-only" aria-label="比分 ${fixture.score.home} 比 ${fixture.score.away}">
         <span>${fixture.score.home}</span><i class="score-separator">:</i><span>${fixture.score.away}</span>
@@ -40,7 +40,7 @@ export function renderFixture(fixture) {
     </div>
     ${scoreHtml}
     <div class="fixture-meta">
-      <span class="fixture-status">${completed ? "已结束" : "未开始"}</span>
+      <span class="fixture-status">${fixture.status === "forfeit" ? "弃赛" : completed ? "已结束" : "未开始"}</span>
       <time>${escapeHtml(fixture.time)}</time>
     </div>
   </article>`;

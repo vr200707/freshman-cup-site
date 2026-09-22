@@ -13,7 +13,7 @@ test("keeps the complete schedule at 18:00", () => {
   assert.equal(fixtures.every((fixture) => fixture.time === "18:00"), true);
 });
 
-test("records only the ten supplied completed scores", () => {
+test("records only the eleven supplied completed scores", () => {
   const fixtures = matchdays.flatMap((matchday) => matchday.fixtures);
   assert.deepEqual(fixtures[0], {
     home: 2,
@@ -29,7 +29,8 @@ test("records only the ten supplied completed scores", () => {
     status: "completed",
     score: { home: 4, away: 2 },
   });
-  assert.equal(fixtures.slice(10).every((fixture) => fixture.score === null), true);
+  assert.equal(fixtures[10].score, null);
+  assert.equal(fixtures.slice(12).every((fixture) => fixture.score === null), true);
 });
 
 test("lists only the supplied scorer record", () => {
@@ -57,6 +58,17 @@ test("fills the A group semifinal qualifiers", () => {
     { home: 3, away: "B组第2" },
     { home: "B组第1", away: 2 },
   ]);
+});
+
+test("records the final B group forfeit as a 3-0 result", () => {
+  const finalRound = matchdays[5].fixtures;
+  assert.deepEqual(finalRound[1], {
+    home: 7,
+    away: 8,
+    time: "18:00",
+    status: "forfeit",
+    score: { home: 3, away: 0 },
+  });
 });
 
 test("calculates separate A and B group standings", () => {

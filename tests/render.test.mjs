@@ -31,6 +31,13 @@ test("does not invent a score for scheduled fixtures", () => {
   assert.match(html, /未开始/);
 });
 
+test("labels a forfeit result while keeping its score visible", () => {
+  const html = renderFixture({ home: 7, away: 8, time: "18:00", status: "forfeit", score: { home: 3, away: 0 } });
+  assert.match(html, /弃赛/);
+  assert.match(html, /team-score--home">3/);
+  assert.match(html, /team-score--away">0/);
+});
+
 test("renders numbered and placeholder badges differently", () => {
   assert.match(renderBadge(2), /team-badge--2[^>]*>2</);
   const placeholder = renderBadge("A组第1");
