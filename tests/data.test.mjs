@@ -55,9 +55,19 @@ test("records the September 20 draws", () => {
 
 test("fills the A group semifinal qualifiers", () => {
   assert.deepEqual(matchdays[6].fixtures.map(({ home, away }) => ({ home, away })), [
-    { home: 3, away: 4 },
-    { home: 1, away: 2 },
+    { home: 3, away: "B组第2" },
+    { home: "B组第1", away: 2 },
   ]);
+});
+
+test("keeps the final 1-versus-4 B group fixture scheduled", () => {
+  assert.deepEqual(matchdays[5].fixtures[0], {
+    home: 1,
+    away: 4,
+    time: "18:00",
+    status: "scheduled",
+    score: null,
+  });
 });
 
 test("records the final B group forfeit as a 3-0 result", () => {
