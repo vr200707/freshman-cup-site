@@ -39,7 +39,7 @@ export const matchdays = Object.freeze([
     date: "2026-09-15",
     stage: "小组赛 · B组",
     round: "第 1 轮",
-    fixtures: [completed(1, 8, 6, 2), completed(4, 7, 4, 3)],
+    fixtures: [{ home: 1, away: 8, time: "18:00", status: "forfeit", score: { home: 3, away: 0 } }, completed(4, 7, 4, 3)],
   },
   {
     date: "2026-09-17",
@@ -51,7 +51,7 @@ export const matchdays = Object.freeze([
     date: "2026-09-19",
     stage: "小组赛 · B组",
     round: "第 2 轮",
-    fixtures: [completed(1, 7, 2, 2), completed(8, 4, 1, 7)],
+    fixtures: [completed(1, 7, 2, 2), { home: 8, away: 4, time: "18:00", status: "forfeit", score: { home: 0, away: 3 } }],
   },
   {
     date: "2026-09-20",
@@ -69,7 +69,7 @@ export const matchdays = Object.freeze([
     date: "2026-09-24",
     stage: "淘汰赛",
     round: "半决赛",
-    fixtures: [scheduled(3, "B组第2"), scheduled("B组第1", 2)],
+    fixtures: [scheduled(3, 4), scheduled(1, 2)],
   },
   {
     date: "2026-10-08",

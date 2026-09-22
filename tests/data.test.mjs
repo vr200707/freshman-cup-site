@@ -40,9 +40,9 @@ test("lists only the supplied scorer record", () => {
 test("updates the six supplied scores", () => {
   const scores = matchdays.slice(1, 4).flatMap((matchday) => matchday.fixtures.map((fixture) => fixture.score));
   assert.deepEqual(scores, [
-    { home: 6, away: 2 }, { home: 4, away: 3 },
+    { home: 3, away: 0 }, { home: 4, away: 3 },
     { home: 6, away: 0 }, { home: 0, away: 8 },
-    { home: 2, away: 2 }, { home: 1, away: 7 },
+    { home: 2, away: 2 }, { home: 0, away: 3 },
   ]);
 });
 
@@ -55,8 +55,8 @@ test("records the September 20 draws", () => {
 
 test("fills the A group semifinal qualifiers", () => {
   assert.deepEqual(matchdays[6].fixtures.map(({ home, away }) => ({ home, away })), [
-    { home: 3, away: "B组第2" },
-    { home: "B组第1", away: 2 },
+    { home: 3, away: 4 },
+    { home: 1, away: 2 },
   ]);
 });
 
@@ -71,6 +71,13 @@ test("records the final B group forfeit as a 3-0 result", () => {
   });
 });
 
+test("reclassifies both earlier 8-team fixtures as 0-3 forfeit losses", () => {
+  assert.deepEqual(matchdays[1].fixtures[0].score, { home: 3, away: 0 });
+  assert.equal(matchdays[1].fixtures[0].status, "forfeit");
+  assert.deepEqual(matchdays[3].fixtures[1].score, { home: 0, away: 3 });
+  assert.equal(matchdays[3].fixtures[1].status, "forfeit");
+});
+
 test("calculates separate A and B group standings", () => {
   assert.deepEqual(groupStandings.A.map(({ id, played, wins, draws, losses, goalsFor, goalsAgainst, points }) => ({ id, played, wins, draws, losses, goalsFor, goalsAgainst, points })), [
     { id: 3, played: 3, wins: 2, draws: 1, losses: 0, goalsFor: 15, goalsAgainst: 5, points: 7 },
@@ -80,5 +87,5 @@ test("calculates separate A and B group standings", () => {
   ]);
   assert.equal(groupStandings.B[0].id, 4);
   assert.equal(groupStandings.B[0].points, 6);
-  assert.equal(groupStandings.B[0].goalsFor, 11);
+  assert.equal(groupStandings.B[0].goalsFor, 7);
 });
