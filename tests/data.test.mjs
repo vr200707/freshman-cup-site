@@ -13,7 +13,7 @@ test("keeps the complete schedule at 18:00", () => {
   assert.equal(fixtures.every((fixture) => fixture.time === "18:00"), true);
 });
 
-test("records only the eleven supplied completed scores", () => {
+test("records only the twelve supplied completed scores", () => {
   const fixtures = matchdays.flatMap((matchday) => matchday.fixtures);
   assert.deepEqual(fixtures[0], {
     home: 2,
@@ -29,7 +29,6 @@ test("records only the eleven supplied completed scores", () => {
     status: "completed",
     score: { home: 4, away: 2 },
   });
-  assert.equal(fixtures[10].score, null);
   assert.equal(fixtures.slice(12).every((fixture) => fixture.score === null), true);
 });
 
@@ -55,18 +54,18 @@ test("records the September 20 draws", () => {
 
 test("fills the A group semifinal qualifiers", () => {
   assert.deepEqual(matchdays[6].fixtures.map(({ home, away }) => ({ home, away })), [
-    { home: 3, away: "B组第2" },
-    { home: "B组第1", away: 2 },
+    { home: 3, away: 4 },
+    { home: 1, away: 2 },
   ]);
 });
 
-test("keeps the final 1-versus-4 B group fixture scheduled", () => {
+test("records the final 1-versus-4 B group result", () => {
   assert.deepEqual(matchdays[5].fixtures[0], {
     home: 1,
     away: 4,
     time: "18:00",
-    status: "scheduled",
-    score: null,
+    status: "completed",
+    score: { home: 4, away: 1 },
   });
 });
 
@@ -95,7 +94,7 @@ test("calculates separate A and B group standings", () => {
     { id: 5, played: 3, wins: 0, draws: 1, losses: 2, goalsFor: 2, goalsAgainst: 10, points: 1 },
     { id: 6, played: 3, wins: 0, draws: 1, losses: 2, goalsFor: 0, goalsAgainst: 11, points: 1 },
   ]);
-  assert.equal(groupStandings.B[0].id, 4);
-  assert.equal(groupStandings.B[0].points, 6);
-  assert.equal(groupStandings.B[0].goalsFor, 7);
+  assert.equal(groupStandings.B[0].id, 1);
+  assert.equal(groupStandings.B[0].points, 7);
+  assert.equal(groupStandings.B[0].goalsFor, 9);
 });
